@@ -36,11 +36,11 @@ jobs:
         if: always() && github.event_name != 'pull_request'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: "build/reports/tests/test/*.xml"
+          files: "build/test-results/test/*.xml"
 
       - name: Archive test results
         uses: actions/upload-artifact@v1
         if: always() && github.event_name != 'pull_request'
         with:
           name: Gradle Test report
-          path: build/reports/tests/test
+          files: "build/test-results/test/*.xml"
