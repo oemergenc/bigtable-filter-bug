@@ -42,5 +42,5 @@ jobs:
         uses: actions/upload-artifact@v1
         if: always() && github.event_name != 'pull_request'
         with:
-          name: Gradle Test report
-          files: "build/test-results/test/*.xml"
+          name: Gradle Test results
+          path: build/test-results/test/
