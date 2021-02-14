@@ -31,6 +31,13 @@ jobs:
         run: |
           ./gradlew build test --info --stacktrace
 
+      - name: Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always() && github.event_name != 'pull_request'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: "build/reports/tests/test/*.xml"
+
       - name: Archive test results
         uses: actions/upload-artifact@v1
         if: always() && github.event_name != 'pull_request'
